@@ -30,37 +30,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO List</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>TODO List</h1>
+    <div class="container">
+        <h1>TODO List</h1>
 
-    <div>
-        <select id="projectDropdown"></select>
-        <button onclick="createProject()">New Project</button>
-        <button onclick="renameProject()">Rename</button>
-        <button onclick="deleteProject()">Delete</button>
+        <div class="project-control">
+            <h4><b>Project List</b></h4>
+            <select id="projectDropdown"></select>
+            <button onclick="createProject()">Add Project</button>
+            <button onclick="renameProject()">Rename Current Project</button>
+            <button onclick="deleteProject()">Delete</button>
+        </div>
+
+        <h2 id="currentProjectName">No Project Selected</h2>
+
+        <div class="add-task-form">
+            <input type="text" id="titleInput" placeholder="Task Title">
+            <input type="text" id="descInput" placeholder="Description">
+            <input type="date" id="dueInput">
+            <select id="priorityInput">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <ul id="taskList"></ul>
     </div>
-
-    <h3>Current Project: <span id="currentProjectName">None</span></h3>
-
-    <div id="taskForm">
-        <input type="text" id="titleInput" placeholder="Task title" />
-        <input type="text" id="descInput" placeholder="Description" />
-        <input type="date" id="dueInput" />
-        <select id="priorityInput">
-            <option value="High">High</option>
-            <option value="Medium" selected>Medium</option>
-            <option value="Low">Low</option>
-        </select>
-        <button onclick="addTask()">Add Task</button>
-    </div>
-
-    <ul id="taskList"></ul>
 
     <script src="index.js"></script>
 </body>
 </html>
+
