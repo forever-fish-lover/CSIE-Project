@@ -94,6 +94,7 @@ function updateCurrentProjectDisplay() {
 
 function switchProject(name) {
     currentProjectName = name;
+    // if(!name) return alert("Please Add Project First");
     renderProjectSelector();
     renderTasks();
     updateCurrentProjectDisplay();
@@ -108,7 +109,7 @@ function createProject() {
 }
 
 function renameProject() {
-    if (!currentProjectName) return;
+    if (!currentProjectName) return alert("Please Add Project First");
     const newName = prompt("Enter new project name:", currentProjectName);
     if (!newName || projects[newName]) return;
     projects[newName] = projects[currentProjectName];
@@ -117,7 +118,7 @@ function renameProject() {
     switchProject(newName);
 }
 
-function deleteProject() {
+/*function deleteProject() {
     if (!currentProjectName) return;
     if (!confirm(`Delete project '${currentProjectName}'?`)) return;
     delete projects[currentProjectName];
@@ -126,7 +127,34 @@ function deleteProject() {
     renderTasks();
     updateCurrentProjectDisplay();
     saveToLocalStorage();
+}*/
+function deleteProject() {
+    if (!currentProjectName) return alert("Please Add Project First");
+    if (!confirm(`Delete project '${currentProjectName}'?`)) return;
+
+    const projectNames = Object.keys(projects);
+    const currentIndex = projectNames.indexOf(currentProjectName);
+
+    // 刪除當前專案
+    delete projects[currentProjectName];
+
+    const remainingProjects = Object.keys(projects);
+
+    if (remainingProjects.length > 0) {
+        // 如果有剩下的專案，選擇刪除專案後的下一個專案
+        // 如果當前專案是最後一個，則選擇上一個專案
+        currentProjectName = remainingProjects[Math.min(currentIndex, remainingProjects.length - 1)];
+    } else {
+        // 如果沒有剩下的專案，清空當前專案選擇
+        currentProjectName = "";
+    }
+
+    renderProjectSelector();
+    renderTasks();
+    updateCurrentProjectDisplay();
+    saveToLocalStorage();
 }
+
 
 function addTask() {
     if (!currentProjectName) return alert("Please select a project first");
