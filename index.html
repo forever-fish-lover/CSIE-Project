@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO List</title>
-    <style>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
         body {
             font-family: Arial, sans-serif;
             max-width: 400px;
@@ -34,7 +35,7 @@
         button {
             margin-left: 10px;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -44,31 +45,7 @@
     <h5>Click Task  Name to Label Completed</h5>
     <ul id="taskList"></ul>
 
-    <script>
-        function addTask() {
-            let taskInput = document.getElementById("taskInput");
-            let taskText = taskInput.value.trim();
-            if (taskText === "") return;
-
-            let li = document.createElement("li");
-            let span = document.createElement("span");
-            span.textContent = taskText;
-            span.onclick = function () {
-                this.classList.toggle("completed");
-            };
-
-            let deleteBtn = document.createElement("button");
-            deleteBtn.textContent = "delete";
-            deleteBtn.onclick = function () {
-                li.remove();
-            };
-
-            li.appendChild(span);
-            li.appendChild(deleteBtn);
-            document.getElementById("taskList").appendChild(li);
-            taskInput.value = "";
-        }
-    </script>
+    <script src="index.js"></script>
 </body>
 
 </html>
