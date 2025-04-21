@@ -1,51 +1,66 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TODO List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>TODO List</h1>
+  <button id="openModalBtn">新增任務</button>
+  <h5>點擊任務名稱標記為完成</h5>
+  <ul id="taskList"></ul>
+
+  <dialog id="taskDialog">
+    <form method="dialog" id="taskForm">
+      <h2>新增任務</h2>
+      <input type="text" id="taskInput" placeholder="Task Name..." required />
+      <div class="dialog-buttons">
+        <button type="submit">建立</button>
+        <button type="button" id="cancelBtn">取消</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="main.js"></script>
+</body>
+</html>
+-->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>TODO List</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 400px;
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .completed {
-            text-decoration: line-through;
-            color: gray;
-        }
-
-        button {
-            margin-left: 10px;
-        }
-    </style> -->
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
     <h1>TODO List</h1>
-    <input type="text" id="taskInput" placeholder="Task Name...">
-    <button onclick="addTask()">create</button>
-    <h5>Click Task  Name to Label Completed</h5>
+
+    <div>
+        <select id="projectDropdown"></select>
+        <button onclick="createProject()">New Project</button>
+        <button onclick="renameProject()">Rename</button>
+        <button onclick="deleteProject()">Delete</button>
+    </div>
+
+    <h3>Current Project: <span id="currentProjectName">None</span></h3>
+
+    <div id="taskForm">
+        <input type="text" id="titleInput" placeholder="Task title" />
+        <input type="text" id="descInput" placeholder="Description" />
+        <input type="date" id="dueInput" />
+        <select id="priorityInput">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
     <ul id="taskList"></ul>
 
     <script src="index.js"></script>
 </body>
-
 </html>

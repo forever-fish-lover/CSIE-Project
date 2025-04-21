@@ -1,8 +1,56 @@
-body {
+/*body {
     font-family: Arial, sans-serif;
     max-width: 400px;
     margin: 20px auto;
     text-align: center;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+    color: gray;
+  }
+  
+  button {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  dialog {
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+  
+  .dialog-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+*/  
+/* 保留原始樣式並擴充 */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#taskForm {
+    margin-top: 10px;
 }
 
 ul {
@@ -11,11 +59,22 @@ ul {
 }
 
 li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
+    text-align: left;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.priority-high {
+    background-color: #ffcccc;
+}
+
+.priority-medium {
+    background-color: #fff3cd;
+}
+
+.priority-low {
+    background-color: #d4edda;
 }
 
 .completed {
@@ -24,5 +83,5 @@ li {
 }
 
 button {
-    margin-left: 10px;
+    margin: 5px;
 }
