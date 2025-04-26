@@ -1,47 +1,4 @@
-/*body {
-    font-family: Arial, sans-serif;
-    max-width: 400px;
-    margin: 20px auto;
-    text-align: center;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .completed {
-    text-decoration: line-through;
-    color: gray;
-  }
-  
-  button {
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  dialog {
-    padding: 20px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  }
-  
-  .dialog-buttons {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-*/  
-/* 保留原始樣式並擴充 */
+/* Reset basic styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f6fa;
@@ -51,6 +8,7 @@ body {
     justify-content: center;
 }
 
+/* Main container */
 .container {
     width: 100%;
     max-width: 800px;
@@ -66,6 +24,7 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
+/* Project controls */
 .project-control {
     display: flex;
     gap: 10px;
@@ -77,8 +36,10 @@ h1, h2 {
 #projectDropdown {
     padding: 5px 10px;
     font-size: 16px;
+
 }
 
+/* Buttons */
 button {
     padding: 6px 12px;
     border: none;
@@ -94,6 +55,7 @@ button:hover {
     background-color: #2f3640;
 }
 
+/* Add task form */
 .add-task-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -110,6 +72,7 @@ button:hover {
     font-size: 14px;
 }
 
+/* Task list */
 #taskList {
     list-style: none;
     padding: 0;
@@ -157,6 +120,7 @@ li button:hover {
     background-color: #c23616;
 }
 
+/* Priority colors */
 .priority-high {
     border-left-color: #e74c3c;
     background-color: #ffe6e6;
@@ -172,3 +136,76 @@ li button:hover {
     background-color: #e6fff2;
 }
 
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #40739e;
+    padding: 20px;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 40px;
+}
+
+.sidebar-content {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center everything horizontally */
+    gap: 10px;
+}
+
+.sidebar-content select {
+    width: 70%; /* Or 60%, 50% — adjust as you like */
+    margin-bottom: 10px;
+}
+
+.sidebar-content button {
+    width: 80%;
+    margin-bottom: 10px;
+    align-items: left;
+}
+
+
+/* Burger Button */
+.burger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1100;
+    color: #2f3640;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+    .container {
+        margin-left: 0;
+        padding: 20px 10px;
+    }
+}
+
+.add-task-form button {
+    grid-column: span 2; /* Span across two columns */
+    justify-self: center; /* Center it horizontally */
+    padding: 8px 20px; /* Optional: make button bigger */
+}

@@ -1,28 +1,4 @@
-/*function addTask() {
-    let taskInput = document.getElementById("taskInput");
-    let taskText = taskInput.value.trim();
-    if (taskText === "") return;
-
-    let li = document.createElement("li");
-    let span = document.createElement("span");
-    span.textContent = taskText;
-    span.onclick = function () {
-        this.classList.toggle("completed");
-    };
-
-    let deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "delete";
-    deleteBtn.onclick = function () {
-        li.remove();
-    };
-
-    li.appendChild(span);
-    li.appendChild(deleteBtn);
-    document.getElementById("taskList").appendChild(li);
-    taskInput.value = "";
-}*/
-// 日期格式化函式
-// 原始功能強化版
+// ---------------------------------------------------------------------------------------------
 class Task {
     constructor(title, description, dueDate, priority) {
         this.id = Date.now();
@@ -118,42 +94,23 @@ function renameProject() {
     switchProject(newName);
 }
 
-/*function deleteProject() {
-    if (!currentProjectName) return;
-    if (!confirm(`Delete project '${currentProjectName}'?`)) return;
-    delete projects[currentProjectName];
-    currentProjectName = "";
-    renderProjectSelector();
-    renderTasks();
-    updateCurrentProjectDisplay();
-    saveToLocalStorage();
-}*/
+
 function deleteProject() {
     if (!currentProjectName) return alert("Please Add Project First");
     if (!confirm(`Delete project '${currentProjectName}'?`)) return;
 
-    const projectNames = Object.keys(projects);
-    const currentIndex = projectNames.indexOf(currentProjectName);
-
-    // 刪除當前專案
     delete projects[currentProjectName];
 
+    // 自動切換到剩下的第一個專案（如果有）
     const remainingProjects = Object.keys(projects);
-
-    if (remainingProjects.length > 0) {
-        // 如果有剩下的專案，選擇刪除專案後的下一個專案
-        // 如果當前專案是最後一個，則選擇上一個專案
-        currentProjectName = remainingProjects[Math.min(currentIndex, remainingProjects.length - 1)];
-    } else {
-        // 如果沒有剩下的專案，清空當前專案選擇
-        currentProjectName = "";
-    }
+    currentProjectName = remainingProjects.length > 0 ? remainingProjects[0] : "";
 
     renderProjectSelector();
     renderTasks();
     updateCurrentProjectDisplay();
     saveToLocalStorage();
 }
+
 
 
 function addTask() {
@@ -233,6 +190,7 @@ function renderTasks() {
     });
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
     loadFromLocalStorage();
     renderProjectSelector();
@@ -240,3 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCurrentProjectDisplay();
     document.getElementById("projectDropdown").onchange = (e) => switchProject(e.target.value);
 });
+
+
+
+

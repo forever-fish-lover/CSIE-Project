@@ -1,70 +1,53 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TODO List</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <h1>TODO List</h1>
-  <button id="openModalBtn">新增任務</button>
-  <h5>點擊任務名稱標記為完成</h5>
-  <ul id="taskList"></ul>
-
-  <dialog id="taskDialog">
-    <form method="dialog" id="taskForm">
-      <h2>新增任務</h2>
-      <input type="text" id="taskInput" placeholder="Task Name..." required />
-      <div class="dialog-buttons">
-        <button type="submit">建立</button>
-        <button type="button" id="cancelBtn">取消</button>
-      </div>
-    </form>
-  </dialog>
-
-  <script src="main.js"></script>
-</body>
-</html>
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO List</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO List</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>TODO List</h1>
 
-        <div class="project-control">
-            <h4><b>Project List</b></h4>
-            <select id="projectDropdown"></select>
-            <button onclick="createProject()">Add Project</button>
-            <button onclick="renameProject()">Rename Current Project</button>
-            <button onclick="deleteProject()">Delete Current Project</button>
-        </div>
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-content">
+      <h4><b>Project List</b></h4>
+      <select id="projectDropdown"></select>
+      <button onclick="createProject()">Add Project</button>
+      <button onclick="renameProject()">Rename Current Project</button>
+      <button onclick="deleteProject()">Delete Current Project</button>
+    </div>
+  </div>
 
-        <h2 id="currentProjectName">No Project Selected</h2>
+  <!-- Burger Button -->
+  <div id="burger" class="burger">&#9776;</div>
 
-        <div class="add-task-form">
-            <input type="text" id="titleInput" placeholder="Task Title">
-            <input type="text" id="descInput" placeholder="Description">
-            <input type="date" id="dueInput">
-            <select id="priorityInput">
-                <option value="High">High</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="Low">Low</option>
-            </select>
-            <button onclick="addTask()">Add Task</button>
-        </div>
+  <div class="container">
+    <h1>TODO List</h1>
 
-        <ul id="taskList"></ul>
+    <h2 id="currentProjectName">No Project Selected</h2>
+
+    <div class="add-task-form">
+      <input type="text" id="titleInput" placeholder="Task Title">
+      <input type="text" id="descInput" placeholder="Description">
+      <input type="date" id="dueInput">
+      <select id="priorityInput">
+        <option value="High">High</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <button onclick="addTask()">Add Task</button>
     </div>
 
-    <script src="index.js"></script>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="index.js"></script>
+  <script>
+    // Sidebar toggle functionality
+    document.getElementById('burger').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
-
